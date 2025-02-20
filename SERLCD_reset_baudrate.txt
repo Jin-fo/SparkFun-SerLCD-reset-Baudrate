@@ -1,10 +1,13 @@
+;
+; SparkFun-SerLCD-reset-Baudrate.asm
+;
+; Created: 2/20/2025 9:45:20 AM
+; Author : userESD
+;
 .nolist
 .include "avr128db48def.inc"
 .list
 
-.dseg
-message: .byte 64
-.cseg
 
 start:
 	ldi r16, low(1667)
@@ -12,60 +15,50 @@ start:
 	ldi r16, high(1667)
 	sts USART3_BAUDH, r16
 
-	ldi r16, low(139)
-	sts USART1_BAUDL, r16
-	ldi r16, high(139)
-	sts USART1_BAUDH, r16        
-
 	ldi r16, 0x03
 	sts USART3_CTRLC, r16
-	sts USART1_CTRLC, r16
 
-	ldi r16, 0x40
+	ldi r16, 0xC0
 	sts USART3_CTRLB, r16
-	ldi r16, 0x80
-	sts USART1_CTRLB, r16
 
 	sbi VPORTB_DIR, 0
-	cbi VPORTC_DIR, 1
+	cbi VPORTB_DIR, 1
 
 main:
-	ldi r16, '|'
-	sts USART3_TXDATAL, r16
-	ldi r16, '-'
-	sts USART3_TXDATAL, r16
+	ldi r20, '|'
+	rcall USART_TX
+	ldi r20, '-'
+	rcall USART_TX
 
-	ldi YL, low(message)
-	ldi YH, high(message)
 	
-	RX_clear:
-		lds r17, USART1_RXDATAH;
-		sbrs r17, 7
-		rjmp RX_clear
+	ldi r20, 0x12
+	rcall USART_TX
 
-	lds r16, USART1_RXDATAL
-	st Y+, r16
-
-	RX_complete:
-		cpi r16, 0x0A
-		breq TX_start
-		rjmp RX_clear
-
-	TX_start:
-	ldi YL, low(message)
-	ldi YH, high(message)
-
-	TX_clear:
-		lds r17, USART3_STATUS
-		sbrs r17, 5
-		rjmp TX_clear
-
-	ld r16, Y+
-	sts USART3_TXDATAL, r16
+	test:
+	rcall case
 	
-	TX_complete:
-		cpi r16, 0x0A
-		breq main
-		rjmp TX_clear
+	rjmp test
 
-	rjmp main
+USART_TX:
+	lds r21, USART3_STATUS
+	sbrs r21, 5
+	rjmp USART_TX
+
+	sts USART3_TXDATAL, r20
+	ret
+
+USART_RX:
+	lds r19, USART3_RXDATAL
+	ret
+
+case:
+	ldi r20, 'o'
+	rcall USART_TX
+
+	rcall USART_RX
+	cp r20, r19
+	breq pass
+	ret
+
+pass:
+	rcall pass
