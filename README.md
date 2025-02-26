@@ -27,7 +27,7 @@ As of 2024, this specific model of **SerLCD v2.5** is used exclusively for **ESE
 
 ## Resetting the SerLCD in Case of Baud Rate Issues
 
-During lab exercises, the SerLCD may receive random unknown signals that can change its baud rate, causing the device to become inoperable under the specified default conditions. 
+During lab exercises, the SerLCD may receive random unknown signals(yolo-ing a transmission operation) that can change its baud rate, causing the device to become inoperable under the specified default conditions. 
 
 Once the baud rate of the LCD changes, the controlling device must match the new baud rate; otherwise, communication is not possible. Resetting the SerLCD then becomes a guessing game of finding the correct baud rate. Once the correct baud rate is identified, the reset command can be sent to restore default settings.
 
