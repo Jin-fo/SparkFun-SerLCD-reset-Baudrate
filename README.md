@@ -1,6 +1,6 @@
 # SerLCD v2.5 Overview
 
-The SerLCD v2.5 is a simple and cost-effective solution for interfacing with Liquid Crystal Displays (LCDs) based on the HD44780 controller. The display settings are stored in onboard EEPROM upon power-up. A series of ASCII-formatted characters are sent to communicate and configure various features on the LCD. A complete table of commands can be found in the **"SparkFun SerLCD v2.5 Application Note"** file.
+The SerLCD v2.5 is a simple and cost-effective solution for interfacing with Liquid Crystal Displays (LCDs) based on the HD44780 controller. The display settings are stored in onboard EEPROM upon power-up. A series of ASCII-formatted characters are sent to communicate and configure various features on the LCD. A complete table of commands can be found in the **"SparkFun SerLCD v2.5 Application Note"** file or refer to **Serial Baud Example**.
 
 ## Notable Commands:
 
@@ -27,7 +27,7 @@ As of 2024, this specific model of **SerLCD v2.5** is used exclusively for **ESE
 
 ## Resetting the SerLCD in Case of Baud Rate Issues
 
-During lab exercises, the SerLCD may receive random unknown signals that can change its baud rate, causing the device to become inoperable under the specified default conditions. 
+During lab exercises, the SerLCD may receive random unknown signals(yolo-ing a transmission operation) that can change its baud rate, causing the device to become inoperable under the specified default conditions. 
 
 Once the baud rate of the LCD changes, the controlling device must match the new baud rate; otherwise, communication is not possible. Resetting the SerLCD then becomes a guessing game of finding the correct baud rate. Once the correct baud rate is identified, the reset command can be sent to restore default settings.
 
