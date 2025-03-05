@@ -31,10 +31,11 @@ During lab exercises, the SerLCD may receive random unknown signals(yolo-ing a t
 
 Once the baud rate of the LCD changes, the controlling device must match the new baud rate; otherwise, communication is not possible. Resetting the SerLCD then becomes a guessing game of finding the correct baud rate. Once the correct baud rate is identified, the reset command can be sent to restore default settings.
 
-### Alternative Reset Method:
+## Alternative Reset Method:
+### Software Reset:
 To avoid baud rate mismatches, **send `CTRL-R` (`0x12`) at 9600 baud within the first 500ms of boot-up (while the splash screen is active)**. This will reset the device to its default communication settings.
 
-### Emergency reset: 
+### Emergency Hardware Reset: 
 If you get OpenLCD stuck into an unknown baud rate, unknown I2C address, etc, there is a safety mechanism built-in. Tie the RX pin to ground and power up OpenLCD. You should see the splash screen 
 then "System reset Power cycle me" and the backlight will begin to blink. Now power down OpenLCD and remove the RX/GND jumper. OpenLCD is now reset to 9600bps with a I2C address of 0x72. 
 Note: This feature can be disabled if necessary. See *Ignore Emergency Reset* for more information.
