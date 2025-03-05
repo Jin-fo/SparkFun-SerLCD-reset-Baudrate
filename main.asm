@@ -41,6 +41,17 @@ main:
 	ldi r19, '-'
 	rcall USART_TX
 
+	;enable RX hardware reset
+	ldi r19, '|'
+	rcall USART_TX
+	ldi r19, 0x1A
+	rcall USART_TX
+	ldi r19, '|'
+	rcall USART_TX
+	ldi r19, 0x1A
+	rcall USART_TX
+
+
 	;Do matching signal check of transmit and received data
 	test_case:
 		rcall signal_check
