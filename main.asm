@@ -36,7 +36,7 @@ main:
 	rcall USART_TX
 
 	;manual change to default baudrate with known baudrate
-	*insert*
+	;*insert*
 
 	;Clear screen
 	ldi r19, '|'
