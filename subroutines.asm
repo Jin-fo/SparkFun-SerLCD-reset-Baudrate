@@ -1,6 +1,6 @@
 
-;.cseg
-;post_home: .db "SERLCD 20x4", 0x0D, 0x0A, "Baud-Rate Reset", 0x0D, 0x0A, "ESE280/381", 0x0D, 0x0A, "Author: Jin Y.C.", 0x00
+.cseg
+post_home: .db "SERLCD 20x4", 0x0D, 0x0A, "BaudRate Reset", 0x0D, 0x0A, "ESE280/381", 0x0D, 0x0A, "Author:Jin Y.C.", 0x00, 0x00
 
 ;===============================================================================
 ;  ___      _                 _   _             
@@ -9,6 +9,32 @@
 ; |___/\_,_|_.__/_| \___/\_,_|\__|_|_||_\___/__/
 ;===============================================================================
 
+
+;***************************************************************************
+;* 
+;* "display_post_home" - show the home screen message
+;*
+;* Description:
+;*	
+;* Parameters: r19
+;*
+;* Returns: r19
+;*
+;***************************************************************************
+display_post_home:
+	//insert code here
+	ldi ZL, LOW(post_home * 2)
+	ldi ZH, HIGH(post_home * 2)
+
+	send:
+	lpm r19, Z+
+	cpi r19, 0x00
+	breq end 
+	rcall USART_TX
+	rjmp send
+
+	end:
+	ret
 
 ; ***************************************************************************
 ; * 
@@ -91,4 +117,38 @@ signal_check:
 pass:
 	ldi r16, 'p'				; signal test passed
 	rcall USART_TX
+	ret
+
+;***************************************************************************
+;* 
+;* "delay_1s" - Response delay seconds
+;*
+;* Description:
+;* Send ASCII character in r20 for USART to transmit
+;* Author:
+;* Version:
+;* Last updated:
+;* Target:
+;* Number of words:
+;* Number of cycles:
+;* Low registers modified:
+;* High registers modified:
+;*
+;* Parameters: r20
+;*
+;* Returns: 
+;*
+;* Notes: 
+;*
+;***************************************************************************
+delay_1s:
+	ldi r30, low(5234) ;input update delay restriction
+	ldi r31, high(5234)
+	outer_loop:
+	ldi r29, $ff
+	inner_loop:
+	dec r29
+	brne inner_loop
+	sbiw r31:r30, 1
+	brne outer_loop
 	ret
