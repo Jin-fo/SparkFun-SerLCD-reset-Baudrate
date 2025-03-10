@@ -30,31 +30,33 @@ start:
 	sbi VPORTB_DIR, 0		;transmit output pin PB0
 	cbi VPORTB_DIR, 1		;receive input pin PB1	
 
-main:
-	;On-bootup hardware reset
+	;On-bootup software reset, for all baudrate
 	ldi r19, 0x12
-	rcall USART_TX
-
-	;manual change to default baudrate with known baudrate
-	;*insert*
-
-	;Clear screen
-	ldi r19, '|'
-	rcall USART_TX
-	ldi r19, '-'
-	rcall USART_TX
+	rcall USART_TX	
 
 	;enable RX hardware reset
 	ldi r19, '|'
 	rcall USART_TX
 	ldi r19, 0x1A
 	rcall USART_TX
+
+main:
+	;Clear screen
 	ldi r19, '|'
 	rcall USART_TX
-	ldi r19, 0x1A
+	ldi r19, '-'
 	rcall USART_TX
 
-	rjmp main
+	rcall delay_1s
+	rcall display_post_home
+	
+	;manual change to default baudrate with known baudrate
+	;*insert*
+
+	finish:
+		rjmp finish
+
+
 	;RX indeterminate, LCD does not TX 
 	;Do matching signal check of transmit and received data
 	test_case:
