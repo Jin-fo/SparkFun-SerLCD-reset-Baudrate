@@ -31,9 +31,12 @@ start:
 	cbi VPORTB_DIR, 1		;receive input pin PB1	
 
 main:
-	;On-bootup reset
+	;On-bootup hardware reset
 	ldi r19, 0x12
 	rcall USART_TX
+
+	;manual change to default baudrate with known baudrate
+	*insert*
 
 	;Clear screen
 	ldi r19, '|'
@@ -51,7 +54,8 @@ main:
 	ldi r19, 0x1A
 	rcall USART_TX
 
-
+	rjmp main
+	;RX indeterminate, LCD does not TX 
 	;Do matching signal check of transmit and received data
 	test_case:
 		rcall signal_check
