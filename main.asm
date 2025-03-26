@@ -56,13 +56,4 @@ main:
 	finish:
 		rjmp finish
 
-
-	;RX indeterminate, LCD does not TX 
-	;Do matching signal check of transmit and received data
-	test_case:
-		rcall signal_check
-		;Test until pass
-		rjmp test_case
-
-
 .include "subroutines.asm"

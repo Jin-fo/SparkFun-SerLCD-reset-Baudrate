@@ -79,46 +79,6 @@ USART_RX:
 	lds r20, USART3_RXDATAL 	; load received data
 	ret
 
-; ***************************************************************************
-; * 
-; * "Signal_check" - Matching Signal Check
-; *
-; * Description:
-; *	Check for matching transmit and receive data, must transmit 
-; *	't' and receive 't'.
-; *
-; * Parameters: r19, r20
-; *
-; * Returns: Null
-; *
-; ***************************************************************************
-signal_check:
-	ldi r19, 't'				; signal test case
-	rcall USART_TX
-
-	rcall USART_RX
-	cp r19, r20
-	breq pass
-	ret
-
-; ***************************************************************************
-; * 
-; * "Operational_pass" - LCD is operational
-; *
-; * Description:
-; *	Send signal 'p' to indicate test passed, LCD is operational 
-; * at normal baud rate(9600). The test should terminate.  
-; * 
-; * Parameters: r16
-; *
-; * Returns: 
-; *
-; ***************************************************************************
-pass:
-	ldi r16, 'p'				; signal test passed
-	rcall USART_TX
-	ret
-
 ;***************************************************************************
 ;* 
 ;* "delay_1s" - Response delay seconds
