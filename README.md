@@ -37,5 +37,6 @@ To avoid baud rate mismatches, **send `CTRL-R` (`0x12`) at 9600 baud within the 
 
 ### Emergency Hardware Reset: 
 If you get OpenLCD stuck into an unknown baud rate, unknown I2C address, etc, there is a safety mechanism built-in. Tie the RX pin to ground and power up OpenLCD. You should see the splash screen 
-then "System reset Power cycle me" and the backlight will begin to blink. Now power down OpenLCD and remove the RX/GND jumper. OpenLCD is now reset to 9600bps with a I2C address of 0x72. 
+then "System reset Power cycle me" and the backlight will begin to blink. Now power down OpenLCD and remove the RX/GND jumper. OpenLCD is now reset to 9600 Baud with a I2C address of 0x72. 
+
 Note: This feature can be disabled if necessary. See *Ignore Emergency Reset* for more information.
