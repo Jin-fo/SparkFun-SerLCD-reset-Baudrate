@@ -18,7 +18,7 @@ The SerLCD v2.5 is a simple and cost-effective solution for interfacing with Liq
 
 
 
-# Default Communication (9600, 8, 1, 1, N):
+Default Communication (9600, 8, 1, 1, N):
 
 - **9600 baud**
 - **8 bits of data**
