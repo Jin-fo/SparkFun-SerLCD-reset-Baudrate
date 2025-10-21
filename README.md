@@ -36,9 +36,14 @@ Once the baud rate of the LCD changes, the controlling device must match the new
 To avoid baud rate mismatches, **send `CTRL-R` (`0x12`) at 9600 baud within the first 500ms of boot-up (while the splash screen is active)**. This will reset the device to its default communication settings.
 
 ### Direct Hardware Reset: 
-If you get OpenLCD stuck into an unknown baud rate, unknown I2C address, etc, there is a safety mechanism built-in. Connect the RX pin to GND of the LCD. Then connect another wire from the GND pin to the actual ground of the circuit. There should be two wires coming from GND of the LCD, one directly to connected to ground and another connected to the RX pin of the LCD. Now power on the LCD. If the  
-
-You should see the splash screen 
-then "System reset Power cycle me" and the backlight will begin to blink. Now power down OpenLCD and remove the RX/GND jumper. OpenLCD is now reset to 9600 Baud with a I2C address of 0x72. 
-
+The below methods require the LCD to be set with "Ignore RX OFF" which enable the RX pin to be shorted to ground. 
 Note: This feature can be disabled if necessary. See *Ignore Emergency Reset* for more information.
+
+If you get OpenLCD stuck into an unknown baud rate, unknown I2C address, etc, there is a safety mechanism built-in. Connect the RX pin to GND of the LCD. Then connect another wire from the GND pin to the actual ground of the circuit. There should be two wires coming from GND of the LCD, one directly to connected to ground and another connected to the RX pin of the LCD. Now power on the LCD. 
+
+You should see the splash screen rebooting the LCD to the default setting ending with a message: "System reset Power cycle me" and the backlight will begin to blink. Now power down OpenLCD and remove the RX/GND jumper. OpenLCD is now reset to 9600 Baud with a I2C address of 0x72. 
+
+
+
+
+
