@@ -3,10 +3,8 @@
 # Overview
 
 The SerLCD v2.5 is a simple and cost-effective solution for interfacing with Liquid Crystal Displays (LCDs) based on the HD44780 controller. The display settings are stored in onboard EEPROM upon power-up. A series of ASCII-formatted characters are sent to communicate and configure various features on the LCD. A complete table of commands can be found in the **"SparkFun SerLCD v2.5 Application Note"** file or refer to **Serial Baud Example**.
-## Used Model:
-**Serial Enabled 20x4 LCD - Black on Green 5V, LCD-09568**
 
-Notable Commands:
+## Notable Commands:
 
 | Function               | Command |
 |------------------------|---------|
@@ -15,8 +13,12 @@ Notable Commands:
 | Ignore RX ON/OFF       | 0x7C, 0x1A |
 | Reset to 9600 Baud     | 0x12 (send during first 500ms of boot-up) |
 
+## Used Model:
+**Serial Enabled 20x4 LCD - Black on Green 5V, LCD-09568**
 
-## Default Communication (9600, 8, 1, 1, N):
+
+
+# Default Communication (9600, 8, 1, 1, N):
 
 - **9600 baud**
 - **8 bits of data**
