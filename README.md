@@ -13,7 +13,7 @@ The SerLCD v2.5 is a simple and cost-effective solution for interfacing with Liq
 | Ignore RX ON/OFF       | 0x7C, 0x1A |
 | Reset to 9600 Baud     | 0x12 (send during first 500ms of boot-up) |
 
-## Used Model:
+## Model and Configuration:
 **Serial Enabled 20x4 LCD - Black on Green 5V, LCD-09568**
 
 
