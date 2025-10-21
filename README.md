@@ -6,7 +6,7 @@ The SerLCD v2.5 is a simple and cost-effective solution for interfacing with Liq
 ## Used Model:
 **Serial Enabled 20x4 LCD - Black on Green 5V, LCD-09568**
 
-## Notable Commands:
+### Notable Commands:
 
 | Function               | Command |
 |------------------------|---------|
