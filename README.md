@@ -6,10 +6,11 @@ The SerLCD v2.5 is a simple and cost-effective solution for interfacing with Liq
 
 | Function               | Command |
 |------------------------|---------|
-| Set Baud rate to 9600  | 0x7C 0x0D |
-| Backlight Fully ON     | 0x7C 0x9D |
+| Set Baud rate to 9600  | 0x7C, 0x0D |
+| Backlight Fully ON     | 0x7C, 0x9D |
+| Ignore RX ON/OFF       | 0x7C, 0x1A |
 | Reset to 9600 Baud     | 0x12 (send during first 500ms of boot-up) |
-| Ignore RX ON/OFF       | 0x7C, 0x1A
+
 
 ## Default Communication (9600, 8, 1, 1, N):
 
