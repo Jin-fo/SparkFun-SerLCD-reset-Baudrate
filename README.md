@@ -32,7 +32,7 @@ During lab exercises, the SerLCD may receive random unknown signals(yolo-ing a t
 Once the baud rate of the LCD changes, the controlling device must match the new baud rate; otherwise, communication is not possible. On power-on of the LCD, a start-up message will appear which include the baud rate of the LCD. Otherwise resetting the baud rate of the SerLCD then becomes a guessing game of finding the correct baud rate. Once the correct baud rate is identified, the controlling device can communicate the command to restore the default settings. 
 
 ## Alternative Reset Method:
-### Software Reset:
+### Program Software Reset:
 To avoid baud rate mismatches, **send `CTRL-R` (`0x12`) at 9600 baud within the first 500ms of boot-up (while the splash screen is active)**. This will reset the device to its default communication settings.
 
 ### Direct Hardware Reset: 
