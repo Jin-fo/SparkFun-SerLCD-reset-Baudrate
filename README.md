@@ -14,7 +14,7 @@ The SerLCD v2.5 is a simple and cost-effective solution for interfacing with Liq
 | Reset to 9600 Baud     | 0x12 (send during first 500ms of boot-up) |
 
 ## Model and Configuration:
-**Serial Enabled 20x4 LCD - Black on Green 5V, LCD-09568**
+**Serial Enabled 20x4 LCD - Black on Red 5V, LCD-09568**
 
 ![System diagram](./image/bootup.jpg)
 
@@ -25,8 +25,6 @@ The SerLCD v2.5 is a simple and cost-effective solution for interfacing with Liq
 - **1 start bit**
 - **1 stop bit**
 - **No parity**
-
-
 
 ## Usage in ESE 280 and ESE 381
 
