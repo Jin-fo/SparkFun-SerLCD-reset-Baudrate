@@ -25,7 +25,7 @@ The SerLCD v2.5 is a simple and cost-effective solution for interfacing with Liq
 - **1 start bit**
 - **1 stop bit**
 - **No parity**
-
+![System diagram](./image/bootup.jpg)
 
 
 ## Usage in ESE 280 and ESE 381
