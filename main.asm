@@ -34,7 +34,7 @@ start:
 	ldi r19, 0x12
 	rcall USART_TX	
 
-	;enable RX hardware reset
+	;enable RX hardware reset(Ignore RX OFF), enabling again will disabled it. 
 	ldi r19, '|'
 	rcall USART_TX
 	ldi r19, 0x1A
