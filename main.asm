@@ -2,7 +2,7 @@
 ; SparkFun-SerLCD-reset-Baudrate.asm
 ;
 ; Created: 2/20/2025 9:45:20 AM
-; Author : J
+; Author : Jin Y. Chen
 ;
 .nolist
 .include "avr128db48def.inc"
